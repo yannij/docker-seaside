@@ -1,4 +1,4 @@
-FROM ubuntu-pharo-seaside
+FROM ubuntu-pharo32-seaside
 
 RUN echo "ZnZincServerAdaptor startOn: 8080" > run.st
 
