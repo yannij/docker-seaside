@@ -1,8 +1,9 @@
 #! /bin/bash -x
-mkdir -f build
+mkdir -p build
 cd build
-cp -p ../Pharo.image tidbit.image
-cp -p ../Pharo.changes tidbit.changes
+#curl https://get.pharo.org/64/ | bash
+cp -p Pharo.image tidbit.image
+cp -p Pharo.changes tidbit.changes
 ./pharo tidbit.image eval --save "
 Metacello new
     githubUser: 'yannij' project: 'Tidbit' commitish: 'master' path: 'src';
