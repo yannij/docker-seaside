@@ -1,0 +1,24 @@
+FROM my-ubuntu-pharo
+
+RUN \
+	./pharo Pharo.image eval --save "\
+		Metacello new \
+			baseline:'Seaside3'; \
+			repository: 'github://SeasideSt/Seaside:v3.2.4/repository'; \
+			load"
+
+RUN \
+	./pharo Pharo.image eval --save "\
+		Metacello new \
+			githubUser: 'magritte-metamodel' project: 'magritte' commitish: 'master' path: 'source'; \
+			baseline: 'Magritte'; \
+			onWarningLog; \
+			load: #('default' 'Magritte-Pharo-Seaside')"
+
+RUN \
+	./pharo Pharo.image eval --save "\
+		Metacello new \
+			githubUser: 'pharo-nosql' project: 'voyage' commitish: 'master' path: 'mc'; \
+			baseline: 'Voyage'; \
+			onWarningLog; \
+			load: #('default')"
