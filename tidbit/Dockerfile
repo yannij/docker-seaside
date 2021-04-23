@@ -3,6 +3,8 @@
 
 # Stage 1: Load the project
 FROM basmalltalk/pharo:8.0-image AS loader
+COPY load-preload.st ./
+RUN pharo Pharo.image load-preload.st --save --quit
 COPY load-tidbit.st ./
 RUN pharo Pharo.image load-tidbit.st --save --quit
 #COPY tidbit7.image ./Pharo.image
